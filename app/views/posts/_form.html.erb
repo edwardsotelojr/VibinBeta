@@ -1,0 +1,101 @@
+
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<center><br/><div class="row" style="">
+    <%= f.text_area :context, class:"", style: "background-color: transparent; overflow:hidden; display:block; border-radius:5px; border:3px solid green;", rows: "1", placeholder: "Text" %>
+  </div></center>
+   <!-- photo button -->
+  <div class="row">
+    <div class="col-xs-3">
+      <label class="btn btn-primary btn-sm">
+        <%= image_tag "PictureUploadButton.png", style: "height:20px; width:20px;" %>
+      <span style="display:none;" class="">
+          <%= f.file_field :image1, id:"image1", multiple: true,  accept: 'image/png, image/jpeg' %>
+        </span>
+      </label>
+     </div>
+     <div class="ovaa hidden col-xs-3 border border-primary ml-auto" style="width: 80px; max-height:80px;" id="imagediv">
+        <%= image_tag "", id: "image", style: "width:80px; height: 80px;"%>
+     </div>
+  </div>
+<!-- song button -->
+  <div class="row">
+    <div class="col-xs-3">
+      <label class="btn btn-primary btn-sm">
+        <%= image_tag "MusicButton.png", style: "height:20px; width:20px;" %>
+      <span style="display:none;" class="">
+      <%= f.fields_for :songs do |g|%>
+      <%= g.file_field :song_file%>
+      <% end %>
+      </span>
+    </label>
+    </div>
+  </div>
+<!-- post button -->
+  <div class="row">
+    <div class="col-xs-3">
+      <label class="btn btn-primary btn-sm">
+        <%= image_tag "PostButton.png", style: "height:20px; width:20px;" %>
+        <span style="display:none;" class="">
+          <%= f.submit "", style:"width: 50px; height:20px;"%>
+        </span>
+      </label>
+     </div>
+  </div>
+<% end %>
+<button > Expand post</button>
+
+
+
+<script>
+  document.addEventListener('input', function (event) {
+	   if (event.target.tagName.toLowerCase() !== 'textarea') return;
+	    autoExpand(event.target);
+  }, false);
+  var autoExpand = function (field) {
+
+	// Reset field height
+	field.style.height = 'inherit';
+
+	// Get the computed styles for the element
+	var computed = window.getComputedStyle(field);
+
+	// Calculate the height
+	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+	             + parseInt(computed.getPropertyValue('padding-top'), 10)
+	             + field.scrollHeight
+	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+
+	field.style.height = height + 'px';
+
+};
+
+document.getElementById("image1").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("image").src = e.target.result;
+        document.getElementById("imagediv").classList.remove("hidden");
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+
+
+
+</script>

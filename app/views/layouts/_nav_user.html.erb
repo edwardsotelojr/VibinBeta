@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand navbar-dark bg-success" style="position: fixed; width: 100%; min-width:700px; z-index:999; height:50px;">
+    <a class="navbar-brand" style="font-size:20px;" href="/home">Vibin Music</a>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav pt-1">
+            <li class="nav-item">
+                <a class="nav-link" href="/explore">Explore</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Notifications </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/groupies">Groupies</a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Profile', user_path(current_user) , :class =>  "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to'Log Out',logout_path, method: :delete, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= form_tag users_path, method: :get do %>
+                <%= text_field :username, nil %>
+                <% end %>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>

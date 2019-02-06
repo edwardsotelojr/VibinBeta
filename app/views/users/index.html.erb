@@ -1,0 +1,10 @@
+<div class="container forall">
+  <% if @users.suggestions.any? %>
+      Did you mean: <%= @users.suggestions.first %>
+  <% end %>
+  <% @users.each do |user| %>
+<div>
+    <p><%= user.username %></p>
+</div>
+<% end %>
+</div>

@@ -1,0 +1,7 @@
+I"v(function() {
+  $(document).ready(ready_post);
+
+  $(document).on('turbolinks:load', ready_post);
+
+}).call(this);
+:ET

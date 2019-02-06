@@ -1,0 +1,10 @@
+<center><%= current_user.name %>'s Songs</center>
+<hr>
+<% for @song in @songs %>
+  <ul style="list-style-type:none">
+
+  </ul>
+  <h3><b><%= @song.title %></b></h3>
+  <h5><%= @song.text %></h5>
+  <hr>
+<% end %>

@@ -1,0 +1,305 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *= require jquery-ui
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+.hidden {
+	 display: none;
+}
+::-webkit-scrollbar {
+	  height:0px;
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+
+.inputfile {
+	width: 20px;
+	height: 20px;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+
+.image_to_upload1 {
+  height: 100px;
+width: 100%;
+display: none;
+}
+
+
+.image_to_upload2 {
+height: 100px;
+width: 100%;
+display: none;
+}
+.image_to_upload3 {
+height: 100px;
+width: 100%;
+display: none;
+}
+.image_to_upload4 {
+height: 100px;
+width: 100%;
+display: none;
+}
+
+.ovaa {
+  overflow-y:scroll;
+}
+
+.border-thick {
+  border-width: thick;
+}
+p{
+  line-height: 10px;
+}
+.img-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    border: solid white 1px;
+    height: 60px;
+    width: 60px;
+     border-radius: 50%;
+      position: relative;
+}
+.post-ava{
+  display: inline-block;
+  overflow: hidden;
+  height: 73%;
+  width: 90%;
+   border-radius: 50%;
+}
+
+.img-post {
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.img-post:hover {
+    transform:scale(4,4);
+    -ms-transform:scale(4,4); /* IE 9 */
+    -moz-transform:scale(4,4); /* Firefox */
+    -webkit-transform:scale(4,4);  /* Safari and Chrome */
+    border-radius: 0;
+
+    -o-transform:scale(4,4); /* Opera */
+    z-index: 1;
+    position: relative;
+}
+.imageclass:hover{
+	height: 50%;
+	width: 50%;
+}
+body {
+  min-width: 100%;
+  background-color: #e6e6e6;
+}
+
+.nav-button {
+  text-decoration: none;
+  color: white;
+}
+
+.nopadding {
+  padding: 0px 0px 0px 0px;
+}
+
+.buticons {
+  border-radius: 10px;
+  margin-bottom : 2px;
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+
+.post {
+  background-color: #b3ffb3;
+  width: 100%;
+  margin-left: 0px;
+  margin-bottom: 5px;
+  height: auto;
+
+}
+
+.forall {
+  position: absolute;
+  min-width: 1050px;
+  top: 80px;
+ left: 0px;
+  right: 0px;
+}
+
+.welcome {
+  color: white;
+  text-align: center;
+  background-color: #00e699;
+  z-index: 3;
+  border-style: solid; //just to see where the body is right now[ it does not start 80px down from the top]
+  border-color: #ffffff;
+  border-width: thin;
+}
+
+.welcome2 {
+  position: relative;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+.field_with_errors {
+  .form-control {
+    color: black;
+  }
+}
+
+.user-profile-name {
+  position: absolute;
+  top: 30px;
+  font-size: 22px;
+  z-index: 1;
+}
+
+.user-profile-username {
+  position: absolute;
+  top: 57px;
+  z-index: 1;
+  font-size: 18px;
+}
+
+.user-profile-location {
+  position: absolute;
+  top: 80px;
+  font-size: 15px;
+}
+
+.profile-avatar {
+  position: absolute;
+  top: 110px;
+}
+
+.followbutton {
+  top: 75px;
+  position: absolute;
+  left: 33%;
+  transform: translateX(-20%);
+  font-size: 18px;
+
+}
+
+.favorite-artist {
+  position: absolute;
+  transform: translate(-300px, 100px);
+  font-size: 18px;
+}
+
+.favorite-song {
+  position: absolute;
+  transform: translate(300px, 100px);
+  font-size: 18px;
+}
+
+.following {
+  position: absolute;
+  transform: translate(-380px, 170px);
+  font-size: 16px;
+}
+
+.followers {
+  position: absolute;
+  transform: translate(-240px, 170px);
+  font-size: 16px;
+}
+
+.profile-banner1 {
+  float: left;
+  width: 100%;
+  z-index: -1;
+}
+
+.bio {
+  position: absolute;
+  top: 240px;
+}
+
+.profile-nav {
+  font-size: 15px;
+}
+
+.left_settings {
+  position: absolute;
+  margin-left: -15px;
+  width: 20%;
+  height: 600px;
+  overflow: auto;
+  color: #999999;
+}
+
+.right_settings {
+  transform: translateX(190px);
+  position: absolute;
+  height: 600px;
+  overflow: auto;
+  width: 80%;
+color: #BBBBBB;
+}
+
+.settings_center {
+  width: auto;
+  height: 600px;
+  top: 80px;
+  color: #BBBBBB;
+
+}
+
+.vibin_btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+}
+
+.vibin_form_text {
+  margin-left: 15px;
+  font-size: 20px;
+  color: black;
+}

@@ -1,0 +1,10 @@
+I"œ(function() {
+  jQuery(function() {
+    return $('#u').autocomplete({
+      source: "/users/autocomplete",
+      minLength: 4
+    });
+  });
+
+}).call(this);
+:ET

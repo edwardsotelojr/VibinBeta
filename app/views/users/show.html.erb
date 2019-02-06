@@ -1,0 +1,93 @@
+<!-- remove all borders -->
+
+
+<% if logged_in? %>
+  <div class="container-fluid forall border border-warning border-thick" style="min-width:1000px;">
+    <div class="row justify-content-center border border-primary border-thick " style="height:300px;">
+
+      <img src="/galaxy.jpg" style="left:0px; width:50%; height: 300px; top:0px; z-index:-1; position:absolute;">
+      <img src="/tree.jpg" style="left:50%; width:50%; height: 300px; top:0px; z-index:-1; position:absolute;">
+      <p class="user-profile-name">
+        <span class="badge badge-primary text-white" style="height:20px;"><%= @user.name %></span></p>
+      <p class="user-profile-username">
+        <span class="badge badge-primary text-white" style="height:20px;">@<%= @user.username %></span></p>
+      <p class="user-profile-location">
+        <span class="badge badge-primary text-white" style="height:20px;"><%= @user.zipcode %></span></p>
+      <div class="profile-avatar">
+        <% if @user.avatar != nil %>
+          <%= image_tag (@user.avatar), style: "width:100px; height:100px; object-fit:cover;" %>
+        <% else %>
+          <img src="/default-avatar.jpg" style="width:100px; height:100px; object-fit:cover;">
+        <% end %>
+      </div>
+      <div class="favorite-artist">
+        <center>
+          <h3><span class="badge badge-secondary">Favorite Artist</span></h3><br>
+          <h4><a href="#" class="badge badge-primary" style="line-height:10px; transform: translateY(-40px);">
+            Currensy</a></h4>
+        </center>
+      </div>
+
+      <div class="favorite-song">
+        <center><h3><span class="badge badge-secondary"> Favorite Song</span></h3><br>
+          <h4>
+            <a href="#" class="badge badge-primary" style="line-height:10px; transform: translateY(-40px); "> JUICE WRLD
+              - LUCID DREAM</a></h4></center>
+      </div>
+      <div class="followers">
+        <span class="badge badge-secondary">   Followers </span><br>
+        <h4><%= link_to @user.followers.count, followers_user_path(@user), :class => "badge badge-primary", :style => "line-height:10px; color:white; transform: translate(20px,-7px);" %></a></h4>
+      </div>
+      <div class="following">
+        <span class="badge badge-secondary">   Following </span><br>
+        <h4><%= link_to @user.following.count, following_user_path(@user), :class => "badge badge-primary", :style => "line-height:10px; color:white; transform: translate(20px,-7px);" %></a></h4>
+      </div>
+      <div class="bio">
+        <span class="badge badge-success" style="width: 300px; height:auto;"> <%= @user.bio %></span>
+      </div>
+
+    </div>
+
+
+    <div class="row bg-success " >
+      <ul class="nav nav-tabs " id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="Posts-tab" data-toggle="tab" href="#Posts" role="tab" aria-controls="Posts" aria-selected="true">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="Music-tab" data-toggle="tab" href="#Music" role="tab" aria-controls="Music" aria-selected="false">Music</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="Playlists-tab" data-toggle="tab" href="#Playlists" role="tab" aria-controls="Playlists" aria-selected="false">Playlists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="Media-tab" data-toggle="tab" href="#Media" role="tab" aria-controls="Media" aria-selected="false">Media</a>
+        </li>
+        <li class="nav-item">
+         <!-- <a class="nav-link" id="AddMusic-tab" data-toggle="tab" href="#AddMusic" role="tab" aria-controls="AddMusic" aria-selected="false">Add Music</a>
+         -->
+          <%= link_to "Add Music", new_song_url %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mr-2">
+          <%= render 'follow_form' if logged_in? %>
+        </li>
+
+      </ul>
+    </div>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="Posts" role="tabpanel" aria-labelledby="Posts-tab"><%= render "posts/userfeed" %></div>
+        <div class="tab-pane fade" id="Music" role="tabpanel" aria-labelledby="Music-tab"><%= render "songs/show_music" %></div>
+        <div class="tab-pane fade" id="Playlists" role="tabpanel" aria-labelledby="Playlists-tab">.3..</div>
+        <div class="tab-pane fade" id="Media" role="tabpanel" aria-labelledby="Media-tab"><%= render "posts/PhotosOnly" %></div>
+        <div class="tab-pane fade" id="AddMusic" role="tabpanel" aria-labelledby="AddMusic-tab"><%= link_to %></div>
+      </div>
+
+    <div class="row" style="height:90px;">
+      <div class="col footer">
+        <center><p>Vibin Music inc. BITCH</p></center>
+      </div>
+    </div>
+  </div>
+<% end %>

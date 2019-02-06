@@ -1,0 +1,163 @@
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item" style="margin-top:-20px;">
+      <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+      <%= submit_tag '', class: "btn btn-sm glyphicon glyphicon-search", style: "width:22px; margin-top:-5px;" %>
+      <% end %>
+    </li>
+
+    <li class="nav-item dropdown justify-content-end"  >
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+  </a>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" >
+    <a class="dropdown-item"><%= link_to "Profile", current_user %></a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item"><%= link_to'Log Out',logout_path, :method => :delete %></a>
+  </div>
+</li>
+</ul>
+
+
+
+
+
+<div class="col-xs-3 border border-dark" style="min-width: 300px; width:45%;">
+  <div class="row post border border-dark">
+    <div class="col-xs-3 border border-dark" style="width: 80px;">
+      <img src="test profile img.jpg" style=" border-radius: 35px; margin-left: -10px; height: 70px; width: 70px;">
+      <button type="button" class="btn btn-info btn-sm buticons" style="padding: 4px; margin-bottom: 2px; border-radius: 10px;"><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></button>
+       <!-- if song in post exist -->
+      <button type="button" class="btn btn-info btn-sm buticons" style="padding: 4px; margin-bottom: 2px; border-radius: 10px;"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span></button>
+      <!-- if song in post exist -->
+      <button type="button" class="btn btn-info btn-sm buticons" style="padding: 4px; margin-bottom: 2px; border-radius: 10px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      <button type="button" class="btn btn-info btn-sm buticons" style="padding: 4px; margin-bottom: 2px; border-radius: 10px;"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+    </div>
+    <div class="colborder border-dark">
+  <%= render "shared/feed" %>
+    </div>
+
+</div>
+  <div class="row post border border-dark">
+    Post 3
+  </div>
+  <div class="row post border border-dark">
+    Post 2
+  </div>
+  <div class="row post border border-dark">
+    Post 1
+  </div>
+
+</div>
+
+
+
+
+
+<div class="col-xs-7 ml-4 " style=" text-align: left; height:20px;">
+    <h3 style="color:black;"><%= User.find(@p.user_id).username %></h3>
+      <div class="row">
+        <div class="col-xs-5">
+          <p class="ml-3" style="color:black; text-align: left;"><%= @p.context %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-xs-5">
+<p>User Email is <%= current_user.email %></p>
+<p>User Username is <%= current_user.username %></p>
+<p>User Name is <%= current_user.name %></p>
+<p>User Birthday is <%= current_user.birthday %></p> <!--style -->
+<p> User Location is <%= current_user.zipcode %></p> <!--Find City,State from zipcode-->
+<p>User Bio is <%= current_user.bio %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5">
+      <% if @user.posts.any? %>
+          <h3>Number of posts: (<%= @user.posts.count %>)</h3>
+          <ol class="posts">
+            <%= render @posts %>
+          </ol>
+
+        <% end %>
+    </div>
+  </div>
+
+
+
+  <button type="button" class="btn btn-info btn-sm buticons" style="padding: 4px; margin-bottom: 2px; border-radius: 10px;"><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></button>
+  <!-- if song in post exist -->
+
+
+ <!-- if song in post exist -->
+ <button type="button" class="btn btn-info btn-sm buticons" style="padding: 4px; margin-bottom: 2px; border-radius: 10px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+ <button type="button" class="btn btn-info btn-sm buticons" style="padding: 4px; margin-bottom: 2px; border-radius: 10px;"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+
+
+
+
+ <div class="profile-avatar">
+    <% if @user.avatar == nil %>
+    <%= image_tag (@user.avatar), style:"width:100px; height:100px; object-fit:cover;" %>
+    <% else %>
+    <img src="default-avatar.jpg" style="width:100px; height:100px; object-fit:cover;">
+    <% end %>
+ </div>
+
+ <div class="favorite-artist">
+<center><h3><span class="badge badge-secondary">Favorite Artist</span></h3><br>
+     <h4><a href="#" class="badge badge-primary" style="line-height:10px; transform: translateY(-40px);"> Currensy</a></h4>  </center>
+ </div>
+ <div class="favorite-song">
+<center><h3><span class="badge badge-secondary"> Favorite Song</span> </h3><br>
+     <h4><a href="#" class="badge badge-primary" style="line-height:10px; transform: translateY(-40px); "> JUICE WRLD - LUCID DREAM</a></h4> </center>
+ </div>
+ <div class="followers">
+   <span class="badge badge-secondary">   Followers </span><br>
+   <h4><%= link_to @user.followers.count, followers_user_path(@user), :class => "badge badge-primary", :style => "line-height:10px; color:white; transform: translate(20px,-7px);" %></a></h4>
+ </div>
+ <div class="following">
+   <span class="badge badge-secondary">   Following </span><br>
+   <h4><%= link_to @user.following.count, following_user_path(@user), :class => "badge badge-primary", :style => "line-height:10px; color:white; transform: translate(20px,-7px);"%></a></h4>
+ </div>
+ <div class="bio">
+     <span class="badge badge-success" style="width: 300px; height:auto;"> <%= @user.bio %></span>
+ </div>
+
+
+ <span class="badge badge-primary text-white">@<%= @user.username %> </span>
+ <p class="user-profile-location" style="line-height: 80%" >  <a href="#" class="badge badge-primary">   <%= @user.zipcode %></a></p>
+
+
+
+ <div class="profile-avatar">
+    <% if @user.avatar == nil %>
+    <%= image_tag (@user.avatar), style:"width:100px; height:100px; object-fit:cover;" %>
+    <% else %>
+    <img src="/default-avatar.jpg" style="width:100px; height:100px; object-fit:cover;">
+    <% end %>
+ </div>
+ <div class="favorite-artist">
+<center><h3><span class="badge badge-secondary">Favorite Artist</span></h3><br>
+     <h4><a href="#" class="badge badge-primary" style="line-height:10px; transform: translateY(-40px);"> Currensy</a></h4>  </center>
+ </div>
+ <div class="favorite-song">
+<center><h3><span class="badge badge-secondary"> Favorite Song</span> </h3><br>
+     <h4><a href="#" class="badge badge-primary" style="line-height:10px; transform: translateY(-40px); "> JUICE WRLD - LUCID DREAM</a></h4> </center>
+ </div>
+ <div class="followers">
+   <span class="badge badge-secondary">   Followers </span><br>
+   <h4><%= link_to @user.followers.count, followers_user_path(@user), :class => "badge badge-primary", :style => "line-height:10px; color:white; transform: translate(20px,-7px);" %></a></h4>
+ </div>
+ <div class="following">
+   <span class="badge badge-secondary">   Following </span><br>
+   <h4><%= link_to @user.following.count, following_user_path(@user), :class => "badge badge-primary", :style => "line-height:10px; color:white; transform: translate(20px,-7px);"%></a></h4>
+ </div>
+ <div class="bio">
+     <span class="badge badge-success" style="width: 300px; height:auto;"> <%= @user.bio %></span>
+ </div>

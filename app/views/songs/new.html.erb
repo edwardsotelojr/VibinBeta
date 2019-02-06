@@ -1,0 +1,26 @@
+<div class="container forall border border-dark">
+ <center> <h1> Go ahead and upload your Song! </h1></center>
+  <%= form_for(@song) do |f| %>
+    <div class="row signup">
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="row signup">
+      <%= f.label :text, "Text" %>
+      <%= f.text_field :text %>
+    </div>
+
+    <div class="row signup">
+      <%= f.label :genre, "Genre" %>
+      <%= f.select :genre, ['Pop', 'Rap', 'Jazz', 'Other'] %>
+    </div>
+
+    <div class="row signup">
+      <%= f.label :song_file, "Upload Song File" %>
+      <%= f.file_field :song_file %>
+    </div>
+
+    <%= f.submit "Add Music", class: "btn btn-primary" %>
+  <% end %>
+</div>

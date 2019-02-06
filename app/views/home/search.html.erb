@@ -1,0 +1,17 @@
+<div class="container" style="margin-top:50px;">
+  <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+    <%= submit_tag 'Search', :username => nil %>
+  <% end %>
+
+<% if @users.blank?  %>
+     <p style="color:black;">user not found</p>
+ <% else %>
+
+    <button class="btn col-xs-3" style="float: left;"><a href="/user/<%= @users.username %>">
+      <div class="col-xs-3"><%= image_tag current_user.avatar.url(:thumb), class: "rounded-img", style: "margin-right: 12px;" %></div>
+      <div class="col-xs-3"><p style="color:black;"><%= @users.username %></p> </div>
+ </a></button>
+
+<% end %>
+</div>

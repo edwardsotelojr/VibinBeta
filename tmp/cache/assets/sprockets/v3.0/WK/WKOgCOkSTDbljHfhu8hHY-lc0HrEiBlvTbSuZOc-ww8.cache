@@ -1,0 +1,41 @@
+I"ô(function() {
+  var ready_post;
+
+  ready_post = function() {
+    var readURL;
+    $('.photo_upload').on('change', function(e) {
+      var i;
+      readURL(this);
+      return i = 0;
+    });
+    return readURL = function(input) {
+      var file, i, j, len, reader, ref, results;
+      if (input.files && input.files[0]) {
+        i = 0;
+        ref = input.files;
+        results = [];
+        for (j = 0, len = ref.length; j < len; j++) {
+          file = ref[j];
+          i += 1;
+          reader = new FileReader();
+          reader.onload = function(e) {
+            var $swap;
+            $('.image_to_upload' + i).attr('src', e.target.result).removeClass('hidden');
+            $swap = $('.swap');
+            if ($swap) {
+              return $swap.removeClass('hidden');
+            }
+          };
+          results.push(reader.readAsDataURL(file));
+        }
+        return results;
+      }
+    };
+  };
+
+  $(document).ready(ready_post);
+
+  $(document).on('turbolinks:load', ready_post);
+
+}).call(this);
+:ET

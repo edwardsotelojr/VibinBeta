@@ -1,0 +1,51 @@
+<div class="container forall">
+
+  <div class="row post border border-primary">
+    <div class="col-xs-3 border border-warning " style="width:20%;">
+
+        <%= image_tag (@user.avatar), class:"post-img" %>
+        <span class="badge badge-primary"><%= User.find(@post.user_id).name %></span>
+        <br/>
+        <span class="badge badge-primary">@<%= link_to User.find(@post.user_id).username, user_path(@post.user_id), style: "color:white;" %></span>
+    <br/>
+      <div class="row">
+        <div class="col">
+
+     </div></div>
+   </div>
+
+    <div class="col-xs-6 border border-danger " style="width: 60%;"  >
+  <br/>
+  <div class="row" style="margin-left: 30px;">
+       <p><%= @post.context %></p> <!-- DO A MIGRATE WHEN YOU HAVE A CHANCE - Alex @ 10:47pm Dec 29-->
+     </div>
+     <br/> <br/>
+
+
+     <% if @post.image1[0].presence %>
+     <div class="row img-wrapper img-post" style="margin-left: 30px;">
+          <%= image_tag (@post.image1[0]), style: "height:120%; object-fit:cover; width:100%; display: inline-block; overflow: hidden;" %>
+
+        </div>
+     <% end %>
+     <% if @post.image1[1].presence %>
+     <div class="row img-wrapper img-post" style="margin-left: 30px;">
+          <%= image_tag (@post.image1[1]), style: "height:120%; object-fit:cover; width:100%; display: inline-block; overflow: hidden;" %>
+        </div>
+     <% end %>
+
+    </div>
+  <div class="col-xs-2" >
+    <% if @post.user_id != current_user.id %>
+       <%= render partial: "posts/#{post.post_type}", locals: {post: @post}%>
+       <br/>
+       <p id="post_<%= @post.id %>_likes"><%= render partial: "/posts/likes", locals: {post: @post} %></p>
+    <% end %> <br/> <br/> <br/> <br/> <br/>
+      <p><%= @post.updated_at %></p>
+      <%= link_to "delete", @post, method: :delete,
+                                             data: { confirm: "You sure?" } %>
+  </div>
+
+
+  </div>
+</div>
